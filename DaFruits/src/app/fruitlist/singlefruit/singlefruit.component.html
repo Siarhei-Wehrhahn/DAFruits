@@ -29,8 +29,8 @@
             <div *ngIf="fruit.reviews.length === 0">no comments available</div>
           </div>
           <div>
-            <input type="text" />
-            <button><img (click)="emitname()" src="./assets/img/arrow-35-32.png" alt="" /></button>
+            <input [(ngModel)]="inputData" type="text" />
+            <button><img (click)="sendInputData()" src="./assets/img/arrow-35-32.png" alt="" /></button>
           </div>
         </div>
       </div>
