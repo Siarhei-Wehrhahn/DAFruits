@@ -17,7 +17,7 @@
             <ng-container *ngFor="let i of [].constructor(getStars(fruit.stars).emptyStars)">
               <img src="./assets/img/stars/star-empty.svg" alt="star_empty" />
             </ng-container>
-            <p [ngStyle]="{color: fruit.stars > 3 ? fontColorGood : fontColorBad}">({{ fruit.stars }})</p>
+            <p [ngClass]="{'fontColorBad': fruit.stars < 3, 'fontColorGood': fruit.stars >= 3}">({{ fruit.stars }})</p>
           </div>
         </div>
         <div><b>Art:</b><br />{{ fruit.genus }}</div>
