@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from "../shared/header/header.component";
+import { SinglefruitComponent } from './singlefruit/singlefruit.component';
 
 @Component({
   selector: 'app-fruitlist',
   standalone: true,
-  imports: [CommonModule, HeaderComponent],
+  imports: [CommonModule, HeaderComponent, SinglefruitComponent],
 templateUrl: './fruitlist.component.html',
   styleUrl: './fruitlist.component.scss'
 })
@@ -63,14 +64,9 @@ export class FruitlistComponent {
       reviews:[{name: "Kevin W.", text: "Ganz gut in der Regel!"},{name: "Oliver J.", text: "Absoluter Favorit beim Frühstück"}],
     },
   ];
-  trackByName(index: number, fruit: any): string {
-    return fruit.name;
-  }
-  
-  getStars(stars: number) {
-    const fullStars = Math.floor(stars);
-    const halfStar = stars - fullStars >= 0.5 ? 1 : 0;
-    const emptyStars = 5 - fullStars - halfStar;
-    return { fullStars, halfStar, emptyStars };
+
+  numLog(index:number) {
+    console.log(index);
+    
   }
 }

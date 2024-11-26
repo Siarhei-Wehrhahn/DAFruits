@@ -1,41 +1,6 @@
 <div class="fruitlist_content">
-    <section *ngFor="let fruit of fruitlist; trackBy: trackByName" class="singleFruitBox">
-      <div>
-        <img src="./assets/img/fruits/{{ fruit.img }}" alt="{{ fruit.name }}" />
-      </div>
-      <div>
-        <h2>{{ fruit.name }}</h2>
-        <div>
-          <p><b>Bewertung:</b></p>
-          <div class="stars">
-            <ng-container *ngFor="let i of [].constructor(getStars(fruit.stars).fullStars)">
-              <img src="./assets/img/stars/star.svg" alt="star_full" />
-            </ng-container>
-            <ng-container *ngIf="getStars(fruit.stars).halfStar">
-              <img src="./assets/img/stars/star-half.svg" alt="star_half" />
-            </ng-container>
-            <ng-container *ngFor="let i of [].constructor(getStars(fruit.stars).emptyStars)">
-              <img src="./assets/img/stars/star-empty.svg" alt="star_empty" />
-            </ng-container>
-            <p [ngClass]="{'fontColorBad': fruit.stars < 3, 'fontColorGood': fruit.stars >= 3}">({{ fruit.stars }})</p>
-          </div>
-        </div>
-        <div><b>Art:</b><br />{{ fruit.genus }}</div>
-        <div><b>Beschreibung:</b><br />{{ fruit.description }}</div>
-        <div>
-          <div>
-            @for(review of fruit.reviews; track review;) {
-                <div><b>{{ review.name }}:</b><br />{{ review.text }}</div>
-            } @empty {
-                no comments available
-            }
-          </div>
-          <div>
-            <input type="text" />
-            <button><img src="./assets/img/arrow-35-32.png" alt="" /></button>
-          </div>
-        </div>
-      </div>
-    </section>
+    @for(singleFruit of fruitlist; track singleFruit.name; let i = $index) {
+        <app-singlefruit (click)="numLog(i)" [fruit]="singleFruit"></app-singlefruit>
+    }
   </div>
   

@@ -1,0 +1,37 @@
+<section class="singleFruitBox">
+      <div>
+        <img src="./assets/img/fruits/{{ fruit.img }}" alt="{{ fruit.name }}" />
+      </div>
+      <div>
+        <h2>{{ fruit.name }}</h2>
+        <div>
+          <p><b>Bewertung:</b></p>
+          <div class="stars">
+            <ng-container *ngFor="let j of [].constructor(getStars(fruit.stars).fullStars)">
+              <img src="./assets/img/stars/star.svg" alt="star_full" />
+            </ng-container>
+            <ng-container *ngIf="getStars(fruit.stars).halfStar">
+              <img src="./assets/img/stars/star-half.svg" alt="star_half" />
+            </ng-container>
+            <ng-container *ngFor="let k of [].constructor(getStars(fruit.stars).emptyStars)">
+              <img src="./assets/img/stars/star-empty.svg" alt="star_empty" />
+            </ng-container>
+            <p>({{ fruit.stars }})</p>
+          </div>
+        </div>
+        <div><b>Art:</b><br />{{ fruit.genus }}</div>
+        <div><b>Beschreibung:</b><br />{{ fruit.description }}</div>
+        <div>
+          <div>
+            <div *ngFor="let review of fruit.reviews; let ri = index">
+              <b>{{ review.name }}:</b><br />{{ review.text }} (Review #{{ ri + 1 }})
+            </div>
+            <div *ngIf="fruit.reviews.length === 0">no comments available</div>
+          </div>
+          <div>
+            <input type="text" />
+            <button><img src="./assets/img/arrow-35-32.png" alt="" /></button>
+          </div>
+        </div>
+      </div>
+    </section>
